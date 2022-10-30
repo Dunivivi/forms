@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <div formGroupName="project">
+          <div class="form-group">
+            <label for="project-name"> Project name </label>
+            <input
+              type="text"
+              id="project"
+              class="form-control"
+              formControlName="name"
+            />
+            <span
+              *ngIf="
+                !signupForm.get('project.name').valid &&
+                signupForm.get('project.name').touched
+              "
+              >Please,enter a valid project name</span
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="project-status">Project status</label>
+            <select id="status" class="form-control" formControlName="status">
+              <option value="stable">Stable</option>
+              <option value="critical">Critical</option>
+              <option value="finished">Finished</option>
+            </select>
+            <span
+              *ngIf="
+                !signupForm.get('project.status').status &&
+                signupForm.get('project.status').touched
+              "
+            >
+              Please, select one option
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            formControlName="email"
+          />
+          <span
+            *ngIf="
+              !signupForm.get('email').valid && signupForm.get('email').touched
+            "
+            >Please, enter a valid email</span
+          >
+        </div>
+        <button class="btn btn-primary">Submit</button>
+      </form>
+      <!--
+            Create a Form with the following Controls and Validators
+            1) Project Name (should not be empty)
+            2) Mail (should not be a empty and a valid email)
+            3) Project Status Dropdown, with three values: 'Stable', 'Critical', 'Finished'
+            4) Submit Button
+  
+            Add your own Validator which doesn't allow "Test" as a Project Name
+  
+            Also implement that Validator as an async Validator (replace the other one)
+  
+            Upon submitting the form, simply print the value to the console
+        -->
+    </div>
+  </div>
+</div>
